@@ -174,22 +174,6 @@ Live URL: [https://<your-hosted-url-here>](https://field-ops-tracker.vercel.app/
 
 ---------------------------------------------------------------------
 
-HACKATHON INFORMATION
-
-Developed for CodeFest’26.
-
-The Team Leader created a public GitHub repository containing:
-- Complete source code
-- Design and implementation details
-- Submission idea documentation
-
-Submission includes:
-- Functional prototype
-- Public GitHub repository
-- Demo video with voice explanation
-
----------------------------------------------------------------------
-
 SUMMARY
 
 FieldOps Tracker provides a practical, real-world solution for managing field operations by replacing informal reporting methods with a verified, auditable, and easy-to-use system. The application improves transparency, accountability, and trust between field officers and management.

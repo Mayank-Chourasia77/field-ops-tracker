@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FieldOps Tracker - Rural-First Field Operations Design System */
+
+@layer base {
+  :root {
+    /* Core palette - High contrast for outdoor/rural visibility */
+    --background: 45 30% 96%;
+    --foreground: 150 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 150 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 30% 15%;
+
+    /* Forest green primary - Trust & nature */
+    --primary: 152 45% 28%;
+    --primary-foreground: 45 30% 96%;
+
+    /* Amber accent - High visibility CTAs */
+    --secondary: 38 92% 50%;
+    --secondary-foreground: 150 30% 15%;
+
+    /* Muted earth tones */
+    --muted: 45 20% 90%;
+    --muted-foreground: 150 15% 40%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 150 30% 15%;
+
+    /* Alert states */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 150 30% 15%;
+
+    --border: 45 20% 85%;
+    --input: 45 20% 85%;
+    --ring: 152 45% 28%;
+
+    --radius: 1rem;
+
+    /* Sidebar for admin */
+    --sidebar-background: 152 45% 28%;
+    --sidebar-foreground: 45 30% 96%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 150 30% 15%;
+    --sidebar-accent: 152 35% 35%;
+    --sidebar-accent-foreground: 45 30% 96%;
+    --sidebar-border: 152 35% 22%;
+    --sidebar-ring: 38 92% 50%;
+
+    /* Custom tokens for field UI */
+    --field-button-min-height: 4rem;
+    --field-icon-size: 2rem;
+    --field-touch-target: 3.5rem;
+  }
+
+  .dark {
+    --background: 150 30% 10%;
+    --foreground: 45 30% 96%;
+
+    --card: 150 25% 15%;
+    --card-foreground: 45 30% 96%;
+
+    --popover: 150 25% 15%;
+    --popover-foreground: 45 30% 96%;
+
+    --primary: 152 55% 45%;
+    --primary-foreground: 150 30% 10%;
+
+    --secondary: 38 92% 55%;
+    --secondary-foreground: 150 30% 10%;
+
+    --muted: 150 20% 20%;
+    --muted-foreground: 45 15% 70%;
+
+    --accent: 38 92% 55%;
+    --accent-foreground: 150 30% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 20% 25%;
+    --input: 150 20% 25%;
+    --ring: 152 55% 45%;
+
+    --sidebar-background: 150 30% 8%;
+    --sidebar-foreground: 45 30% 96%;
+    --sidebar-primary: 38 92% 55%;
+    --sidebar-primary-foreground: 150 30% 10%;
+    --sidebar-accent: 150 25% 18%;
+    --sidebar-accent-foreground: 45 30% 96%;
+    --sidebar-border: 150 25% 15%;
+    --sidebar-ring: 38 92% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Large touch targets for rural users */
+  button, a, input, select, textarea {
+    @apply min-h-[var(--field-touch-target)];
+  }
+}
+
+@layer components {
+  /* Field-optimized large button */
+  .btn-field {
+    @apply min-h-16 px-8 py-4 text-xl font-bold rounded-2xl 
+           transition-all duration-200 active:scale-95
+           focus:outline-none focus:ring-4 focus:ring-ring/50;
+  }
+
+  .btn-field-primary {
+    @apply btn-field bg-primary text-primary-foreground 
+           hover:bg-primary/90 shadow-lg;
+  }
+
+  .btn-field-secondary {
+    @apply btn-field bg-secondary text-secondary-foreground 
+           hover:bg-secondary/90 shadow-lg;
+  }
+
+  .btn-field-outline {
+    @apply btn-field border-4 border-primary text-primary 
+           bg-transparent hover:bg-primary/10;
+  }
+
+  .btn-field-success {
+    @apply btn-field bg-success text-success-foreground 
+           hover:bg-success/90 shadow-lg;
+  }
+
+  .btn-field-destructive {
+    @apply btn-field bg-destructive text-destructive-foreground 
+           hover:bg-destructive/90 shadow-lg;
+  }
+
+  /* Card styles */
+  .card-field {
+    @apply bg-card rounded-2xl p-6 shadow-md border-2 border-border;
+  }
+
+  /* Max-width page containers */
+  .app-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .app-container-narrow {
+    @apply w-full max-w-xl mx-auto;
+  }
+
+  /* Status indicators */
+  .status-dot {
+    @apply w-4 h-4 rounded-full;
+  }
+
+  .status-active {
+    @apply bg-success animate-pulse;
+  }
+
+  .status-inactive {
+    @apply bg-muted-foreground;
+  }
+
+  /* Icon container for field UI */
+  .icon-field {
+    @apply w-12 h-12 flex items-center justify-center 
+           rounded-xl bg-primary/10 text-primary;
+  }
+
+  /* Navigation bar for mobile */
+  .nav-field {
+    @apply fixed bottom-0 left-0 right-0 bg-card border-t-2 border-border
+           flex justify-around items-center py-3 px-4 safe-area-pb;
+  }
+
+  .nav-field-item {
+    @apply flex flex-col items-center gap-1 p-2 rounded-xl
+           text-muted-foreground transition-colors min-w-[4rem];
+  }
+
+  .nav-field-item.active {
+    @apply text-primary bg-primary/10;
+  }
+
+  /* Form inputs */
+  .input-field {
+    @apply w-full min-h-14 px-4 py-3 text-lg rounded-xl 
+           border-2 border-input bg-background
+           focus:border-primary focus:ring-2 focus:ring-primary/20
+           placeholder:text-muted-foreground;
+  }
+
+  /* Large checkbox/radio for rural UX */
+  .checkbox-field {
+    @apply w-8 h-8 rounded-lg border-3 border-primary 
+           checked:bg-primary checked:border-primary;
+  }
+}
+
+@layer utilities {
+  /* Safe area for mobile devices */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+
+  .safe-area-pt {
+    padding-top: env(safe-area-inset-top, 1rem);
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(152 45% 28%), hsl(152 45% 35%));
+  }
+
+  .bg-gradient-success {
+    background: linear-gradient(135deg, hsl(142 70% 45%), hsl(142 70% 55%));
+  }
+
+  /* Text utilities for rural UX */
+  .text-field-lg {
+    @apply text-xl font-semibold;
+  }
+
+  .text-field-xl {
+    @apply text-2xl font-bold;
+  }
+
+  /* Animation utilities */
+  .animate-success {
+    animation: success-bounce 0.5s ease-out;
+  }
+
+  @keyframes success-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+}

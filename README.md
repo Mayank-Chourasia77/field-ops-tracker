@@ -170,7 +170,7 @@ HOSTED URL
 
 This project is a mobile-first web application.
 
-Live URL: https://<your-hosted-url-here>
+Live URL: [https://<your-hosted-url-here>](https://field-ops-tracker.vercel.app/)
 
 ---------------------------------------------------------------------
 

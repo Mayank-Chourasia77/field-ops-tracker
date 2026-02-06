@@ -1,219 +1,195 @@
 # FieldOps Tracker
 
-FieldOps Tracker is a mobile-first internal operations platform designed to improve accountability and transparency in field-based work environments, especially in rural and low-connectivity regions.
+FieldOps Tracker is a mobile-first internal operations application built to improve accountability, transparency, and reporting accuracy in field-based work environments, especially in rural and low-connectivity regions.
 
-## Problem Statement
-Field officers often rely on informal tools like WhatsApp, phone calls, and manual notes to report attendance, travel, and work activities. This leads to poor accountability, inconsistent records, and lack of auditability.
+---------------------------------------------------------------------
 
-## Solution
-FieldOps Tracker replaces informal reporting with a structured, verifiable system that records:
-- Daily work sessions (clock-in / clock-out)
-- Odometer-based travel verification with photo proof
-- Persistent activity history for audit and review
+PROBLEM STATEMENT
 
-The system is designed for low digital literacy users and unreliable internet conditions.
+Field officers often report attendance, travel, meetings, and sales using informal tools such as WhatsApp messages, phone calls, or handwritten notes. This leads to unreliable reporting, lack of verification, poor accountability, and no proper audit trail for management.
 
-## Overview
-- Frontend app built with Vite, React, and TypeScript
-- Field and admin experiences organized by route
-- Supabase integration for data and auth
-- Tailwind CSS and shadcn/ui component library
+---------------------------------------------------------------------
 
-## Features
-- Auth flows: login and signup
-- Field officer module: dashboard, meetings, distribution, sales, profile, odometer logs
+SOLUTION OVERVIEW
+
+FieldOps Tracker replaces informal reporting with a structured, verifiable, and auditable system for managing field operations.
+
+The system enables organizations to:
+- Track verified daily work sessions using Clock In and Clock Out
+- Record meetings, sample distribution, and sales activities
+- Verify travel using odometer readings with photo proof
+- Maintain complete historical records for audit and review
+
+The application is designed to be mobile-first, simple to use, and suitable for users with low digital literacy.
+
+---------------------------------------------------------------------
+
+KEY FEATURES
+
+Field Officer Module:
+- Email/password authentication
+- Daily Clock In and Clock Out
+- Today’s Work Session overview
+- Login and logout history
+- Meetings logging
+- Sample distribution tracking
+- Sales entry (B2B and B2C)
+- Odometer verification with photo upload
+- Profile management
+
+Admin Module:
 - Admin dashboard
-- Maps and geolocation utilities
-- Charts and analytics components
-- Supabase-backed data layer
+- Overview of field activity
+- Analytics and charts
+- Historical audit-ready data
 
-## Tech Stack
+---------------------------------------------------------------------
+
+SYSTEM ARCHITECTURE
+
+Frontend: React + TypeScript (Vite)
+Backend: Supabase (Authentication, Database, Storage)
+Styling: Tailwind CSS with shadcn/ui
+Routing: React Router with role-based access
+Data Layer: Supabase with Row Level Security (RLS)
+
+---------------------------------------------------------------------
+
+IMPLEMENTATION METHODOLOGY
+
+1. Authentication handled using Supabase Auth
+2. Daily work sessions recorded using clock-in and clock-out events
+3. Meetings, sales, and sample distribution logged via structured forms
+4. Odometer readings stored with photo proof for travel verification
+5. Persistent storage ensures historical audit trail
+6. Role-based access enforced using Supabase RLS policies
+
+---------------------------------------------------------------------
+
+TECHNOLOGY STACK
+
+Frontend:
 - Vite
-- React 18 + TypeScript
-- Tailwind CSS + shadcn/ui
+- React 18
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
 - React Router
 - TanStack Query
-- Supabase JS
-- Vitest + Testing Library
 
-## Getting Started
-1. Install dependencies.
+Backend:
+- Supabase Auth
+- Supabase Database
+- Supabase Storage
 
-```sh
+Testing:
+- Vitest
+- Testing Library
+
+---------------------------------------------------------------------
+
+DEPENDENCIES
+
+Main Dependencies:
+- react
+- react-dom
+- react-router-dom
+- @tanstack/react-query
+- @supabase/supabase-js
+- tailwindcss
+- shadcn/ui
+- clsx
+- lucide-react
+
+Dev Dependencies:
+- typescript
+- vite
+- eslint
+- vitest
+- postcss
+- autoprefixer
+
+---------------------------------------------------------------------
+
+SETUP AND USAGE INSTRUCTIONS
+
+Prerequisites:
+- Node.js (v18 or higher)
+- npm
+
+Steps to run locally:
+
+git clone <repository-url>
+cd field-ops-tracker
 npm install
-```
 
-2. Create a `.env` file in the project root.
+Create .env file in root directory with:
+VITE_SUPABASE_URL=https://<project-ref>.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=<supabase-anon-key>
+VITE_SUPABASE_ANON_KEY=<supabase-anon-key>
 
-```env
-VITE_SUPABASE_URL="https://<project-ref>.supabase.co"
-VITE_SUPABASE_PUBLISHABLE_KEY="<anon-or-publishable-key>"
-VITE_SUPABASE_PROJECT_ID="<project-ref>"
-```
-
-3. Start the dev server.
-
-```sh
+Start development server:
 npm run dev
-```
 
-## Scripts
-- `npm run dev` Start the Vite dev server
-- `npm run build` Build for production
-- `npm run build:dev` Build with development mode
-- `npm run preview` Preview the production build locally
-- `npm run lint` Run ESLint
-- `npm run test` Run tests once with Vitest
-- `npm run test:watch` Run tests in watch mode
+---------------------------------------------------------------------
 
-## Project Structure
-```text
-.
-|-- .env
-|-- .gitignore
-|-- bun.lockb
-|-- components.json
-|-- dist/
-|-- eslint.config.js
-|-- index.html
-|-- node_modules/
-|-- package-lock.json
-|-- package.json
-|-- postcss.config.js
-|-- public/
-|   |-- favicon.ico
-|   |-- placeholder.svg
-|   |-- robots.txt
-|-- src/
-|   |-- App.tsx
-|   |-- index.css
-|   |-- main.tsx
-|   |-- vite-env.d.ts
-|   |-- components/
-|   |   |-- NavLink.tsx
-|   |   |-- auth/
-|   |   |   |-- AuthStateHandler.tsx
-|   |   |-- layout/
-|   |   |   |-- FieldLayout.tsx
-|   |   |   |-- FieldNavigation.tsx
-|   |   |-- maps/
-|   |   |   |-- ActivityMap.tsx
-|   |   |-- ui/
-|   |   |   |-- accordion.tsx
-|   |   |   |-- alert-dialog.tsx
-|   |   |   |-- alert.tsx
-|   |   |   |-- aspect-ratio.tsx
-|   |   |   |-- avatar.tsx
-|   |   |   |-- badge.tsx
-|   |   |   |-- breadcrumb.tsx
-|   |   |   |-- button.tsx
-|   |   |   |-- calendar.tsx
-|   |   |   |-- card.tsx
-|   |   |   |-- carousel.tsx
-|   |   |   |-- chart.tsx
-|   |   |   |-- checkbox.tsx
-|   |   |   |-- collapsible.tsx
-|   |   |   |-- command.tsx
-|   |   |   |-- context-menu.tsx
-|   |   |   |-- dialog.tsx
-|   |   |   |-- drawer.tsx
-|   |   |   |-- dropdown-menu.tsx
-|   |   |   |-- FieldButton.tsx
-|   |   |   |-- form.tsx
-|   |   |   |-- hover-card.tsx
-|   |   |   |-- input-otp.tsx
-|   |   |   |-- input.tsx
-|   |   |   |-- label.tsx
-|   |   |   |-- menubar.tsx
-|   |   |   |-- navigation-menu.tsx
-|   |   |   |-- pagination.tsx
-|   |   |   |-- popover.tsx
-|   |   |   |-- progress.tsx
-|   |   |   |-- radio-group.tsx
-|   |   |   |-- resizable.tsx
-|   |   |   |-- scroll-area.tsx
-|   |   |   |-- select.tsx
-|   |   |   |-- separator.tsx
-|   |   |   |-- sheet.tsx
-|   |   |   |-- sidebar.tsx
-|   |   |   |-- skeleton.tsx
-|   |   |   |-- slider.tsx
-|   |   |   |-- sonner.tsx
-|   |   |   |-- switch.tsx
-|   |   |   |-- table.tsx
-|   |   |   |-- tabs.tsx
-|   |   |   |-- textarea.tsx
-|   |   |   |-- toast.tsx
-|   |   |   |-- toaster.tsx
-|   |   |   |-- toggle-group.tsx
-|   |   |   |-- toggle.tsx
-|   |   |   |-- tooltip.tsx
-|   |   |   |-- use-toast.ts
-|   |-- contexts/
-|   |   |-- AuthContext.tsx
-|   |-- hooks/
-|   |   |-- use-mobile.tsx
-|   |   |-- use-toast.ts
-|   |   |-- useAuth.ts
-|   |   |-- useGeolocation.ts
-|   |-- integrations/
-|   |   |-- supabase/
-|   |   |   |-- client.ts
-|   |   |   |-- types.ts
-|   |-- lib/
-|   |   |-- utils.ts
-|   |-- pages/
-|   |   |-- NotFound.tsx
-|   |   |-- admin/
-|   |   |   |-- AdminDashboard.tsx
-|   |   |-- auth/
-|   |   |   |-- Login.tsx
-|   |   |   |-- Signup.tsx
-|   |   |-- field/
-|   |   |   |-- DistributionPage.tsx
-|   |   |   |-- FieldDashboard.tsx
-|   |   |   |-- MeetingsList.tsx
-|   |   |   |-- NewMeeting.tsx
-|   |   |   |-- OdometerPage.tsx
-|   |   |   |-- ProfilePage.tsx
-|   |   |   |-- SalesPage.tsx
-|   |-- test/
-|   |   |-- example.test.ts
-|   |   |-- setup.ts
-|   |-- types/
-|   |   |-- database.ts
-|-- supabase/
-|   |-- config.toml
-|   |-- migrations/
-|   |   |-- 20260205113141_5d2ca40c-7236-4194-92b6-cfb55774d328.sql
-|   |   |-- 20260206120000_add_work_sessions.sql
-|   |   |-- 20260206133000_add_odometer_logs.sql
-|-- tailwind.config.ts
-|-- tsconfig.app.json
-|-- tsconfig.json
-|-- tsconfig.node.json
-|-- vite.config.ts
-|-- vitest.config.ts
-```
+APPLICATION ROUTES
 
-## Routes
-- `/login` Login page
-- `/signup` Signup page
-- `/field` Field dashboard
-- `/field/meetings` Meetings list
-- `/field/meetings/new` New meeting
-- `/field/distribution` Distribution page
-- `/field/sales` Sales page
-- `/field/profile` Profile page
-- `/field/odometer` Odometer page
-- `/admin` Admin dashboard
+/login            -> Login page
+/signup           -> Signup page
+/field            -> Field dashboard
+/field/meetings   -> Meetings list
+/field/meetings/new -> New meeting
+/field/distribution -> Sample distribution
+/field/sales      -> Sales page
+/field/profile    -> Profile page
+/field/odometer   -> Odometer verification
+/admin            -> Admin dashboard
 
-## Notes
-- Path alias `@/` maps to `src/` (see `tsconfig.app.json`).
-- Supabase client lives in `src/integrations/supabase/client.ts`.
-- Database types are in `src/integrations/supabase/types.ts` and `src/types/database.ts`.
+---------------------------------------------------------------------
 
-## Build and Deploy
-- Build: `npm run build`
-- Preview build locally: `npm run preview`
-- Deploy the contents of `dist/` to your hosting provider of choice.
+PROJECT STRUCTURE (HIGH LEVEL)
+
+/src/pages              -> Application pages
+/src/components         -> Reusable UI components
+/src/integrations/supabase -> Supabase client and types
+/src/contexts           -> Authentication context
+/src/hooks              -> Custom hooks
+/supabase/migrations    -> Database schema and migrations
+
+---------------------------------------------------------------------
+
+BUILD INSTRUCTIONS
+
+npm run build
+npm run preview
+
+---------------------------------------------------------------------
+
+HOSTED URL
+
+This project is a mobile-first web application.
+
+Live URL: https://<your-hosted-url-here>
+
+---------------------------------------------------------------------
+
+HACKATHON INFORMATION
+
+Developed for CodeFest’26.
+
+The Team Leader created a public GitHub repository containing:
+- Complete source code
+- Design and implementation details
+- Submission idea documentation
+
+Submission includes:
+- Functional prototype
+- Public GitHub repository
+- Demo video with voice explanation
+
+---------------------------------------------------------------------
+
+SUMMARY
+
+FieldOps Tracker provides a practical, real-world solution for managing field operations by replacing informal reporting methods with a verified, auditable, and easy-to-use system. The application improves transparency, accountability, and trust between field officers and management.
